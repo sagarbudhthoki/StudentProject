@@ -84,7 +84,7 @@ class Register:
 
             try:
 
-                con=pymysql.connect(host="localhost",user="root",password="sagar123",database="register")
+                con=pymysql.connect(host="localhost",user="root",password="sagar123",database="assignment")
                 if con:
                     print("server info",con.get_server_info())
                 cur=con.cursor()
@@ -98,21 +98,20 @@ class Register:
                 if row!=None:
                     messagebox.showerror("Error", "User already Exist,Please try with another email", parent=self.root)
                 else:
-                    cur.execute("insert into register (f_name,l_name,contact,email,question,answer,password) values(%s,%s,%s,%s,%s,%s%,%s",
-                                    (self.txt_fname.get(),
-                                    self.txt_lname.get(),
-                                    self.txt_contact.get(),
-                                    self.txt_email.get(),
-                                    self.cmb_quest.get(),
-                                    self.txt_answer.get(),
-                                    self.txt_password.get()
-                                    ))
+                    print(self.txt_fname.get(),self.txt_lname.get(),self.txt_contact.get(),self.txt_email.get(),self.cmb_quest.get(),self.txt_answer.get(),int(self.txt_password.get()))
+                    query="insert into register  values(%s,%s,%s,%s,%s,%s,%s)"
+                    values=(self.txt_fname.get(),self.txt_lname.get(),self.txt_contact.get(),self.txt_email.get(),self.cmb_quest.get(),self.txt_answer.get(),int(self.txt_password.get()))
+                    cur.execute(query,values)
+
+
+
                 con.commit()
                 con.close()
                 messagebox.showinfo("Success", "Successfully Registered", parent=self.root)
                 self.clear()
             except Exception as es:
                 messagebox.showerror("Error",f"Error due to:{str(es)}",parent=self.root)
+
 
 
 
