@@ -103,8 +103,6 @@ class Register:
                     values=(self.txt_fname.get(),self.txt_lname.get(),self.txt_contact.get(),self.txt_email.get(),self.cmb_quest.get(),self.txt_answer.get(),int(self.txt_password.get()))
                     cur.execute(query,values)
 
-
-
                 con.commit()
                 con.close()
                 messagebox.showinfo("Success", "Successfully Registered", parent=self.root)
