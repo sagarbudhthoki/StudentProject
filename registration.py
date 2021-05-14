@@ -1,4 +1,3 @@
-
 from tkinter import*
 from tkinter import ttk,messagebox
 from PIL import Image,ImageTk
@@ -112,24 +111,6 @@ class Register:
                 self.clear()
             except Exception as es:
                 messagebox.showerror("Error",f"Error due to:{str(es)}",parent=self.root)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 root=Tk()
 obj=Register(root)
